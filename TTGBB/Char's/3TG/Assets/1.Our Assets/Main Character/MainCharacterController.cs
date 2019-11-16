@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MainCharacterController : MonoBehaviour
-{
+{    
+    //MOVEMENT
     float speed = 1f;
     float rot = 0f;
     float rotSpeed = 80f;
@@ -28,10 +29,10 @@ public class MainCharacterController : MonoBehaviour
         controller = GetComponent<CharacterController>(); //referncing character controller on player in Unity
         animate = GetComponent<Animator>(); //referencing animator on player in Unity
     }
-
+    
     // Update is called once per frame
     void Update()
-    {
+    {       
         if (controller.isGrounded)//if the character is touching the ground
         {
             //----------WALKING MOVEMENT AND ANIMATION (CONDITION 01)----------
