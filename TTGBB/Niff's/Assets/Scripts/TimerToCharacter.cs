@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
 {
     public Text timerText;
     private float startTime;
+    private bool Finished = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +17,11 @@ public class Timer : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        if (Finished)
+        {
+            return;
+        }
         float t = Time.time - startTime; //where the timer starts and stores it in t
 
         string minutes = ((int)t / 60).ToString();
@@ -26,6 +31,7 @@ public class Timer : MonoBehaviour
     }   
     public void Finish()
     {
+        Finished = true;
         timerText.color = Color.red;
     }
 }
