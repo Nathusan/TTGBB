@@ -22,12 +22,19 @@ public class MainCharacterController : MonoBehaviour
 
     CharacterController controller;
     Animator animate;
-
+    Rigidbody rbFreeze;
+    
     // Start is called before the first frame update
     void Start()
     {
-        controller = GetComponent<CharacterController>(); //referncing character controller on player in Unity
-        animate = GetComponent<Animator>(); //referencing animator on player in Unity
+        controller = GetComponent<CharacterController>(); //referncing character controller on player
+        animate = GetComponent<Animator>(); //referencing animator on player
+        rbFreeze = GetComponent<Rigidbody>(); //referencing the freeze position buttons on the rigidbody
+
+        rbFreeze = GetComponent<Rigidbody>();
+        //This locks the RigidBody so that it does not move or rotate in the z axis (can be seen in Inspector).
+        rbFreeze.constraints = RigidbodyConstraints.FreezePosition;
+       
     }
     
     // Update is called once per frame
@@ -98,15 +105,19 @@ public class MainCharacterController : MonoBehaviour
                 moveDir = new Vector3(0, 0, 0);
             }
 
-            //----------POWER UP 01 - STRENGTH----------
+            //----------POWER UP - STRENGTH----------
+            if(strength == true)
+            {
+                rbFreeze.constraints = RigidbodyConstraints.None;
+                Debug.Log("Strength Power Up");
+            }
+
+           
 
 
 
-            //----------POWER UP 02 - SHAPE-------------
-
-
-
-            //----------POWER UP 03 - JUMP BOOST--------
+            //-----------POWER UP - ROUND------------
+            //shape      
 
         }
 
@@ -128,6 +139,7 @@ public class MainCharacterController : MonoBehaviour
         else if (other.gameObject.CompareTag("Strength"))
         {
             strength = true;
+
             Destroy(other.gameObject);
         }
         else if (other.gameObject.CompareTag("Jump"))
