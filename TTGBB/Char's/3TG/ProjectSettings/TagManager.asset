@@ -9,6 +9,7 @@ TagManager:
   - Round
   - Strength
   - Jump
+  - Cube
   layers:
   - Default
   - TransparentFX

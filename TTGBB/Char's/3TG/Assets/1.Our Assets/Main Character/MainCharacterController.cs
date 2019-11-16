@@ -117,4 +117,27 @@ public class MainCharacterController : MonoBehaviour
         moveDir.y -= gravity * Time.deltaTime; //every frame, move our player on the y axis by gravity value. Essentially, lowering the character to the ground
         controller.Move(moveDir * Time.deltaTime);
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Round"))
+        {
+            shape = true;
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.CompareTag("Strength"))
+        {
+            strength = true;
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.CompareTag("Jump"))
+        {
+            jumpBoost = true;
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.CompareTag("Cube"))
+        {
+            other.SendMessage("Finish");
+            Destroy(other.gameObject);
+        }
+    }
 }
