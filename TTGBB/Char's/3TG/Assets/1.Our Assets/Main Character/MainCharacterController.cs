@@ -16,7 +16,7 @@ public class MainCharacterController : MonoBehaviour
     public float strengthVal = 0f;
     public bool shape = false;
     public bool jumpBoost = false;
-    public float jumpVal = 0f;
+    public float jumpVal = 5f;
 
     Vector3 moveDir = Vector3.zero;
 
@@ -117,6 +117,7 @@ public class MainCharacterController : MonoBehaviour
         moveDir.y -= gravity * Time.deltaTime; //every frame, move our player on the y axis by gravity value. Essentially, lowering the character to the ground
         controller.Move(moveDir * Time.deltaTime);
     }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Round"))
@@ -132,12 +133,13 @@ public class MainCharacterController : MonoBehaviour
         else if (other.gameObject.CompareTag("Jump"))
         {
             jumpBoost = true;
+            jumpVal += 7.5f;
             Destroy(other.gameObject);
         }
         else if (other.gameObject.CompareTag("Cube"))
         {
             other.SendMessage("Finish");
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
         }
     }
 }
