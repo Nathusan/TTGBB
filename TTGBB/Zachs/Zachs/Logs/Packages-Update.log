@@ -1,5 +1,5 @@
 
-=== Wed Nov 13 14:13:57 2019
+=== Sat Nov 16 11:12:50 2019
 
 Packages were changed.
 Update Mode: mergeDefaultDependencies
@@ -45,13 +45,3 @@ The following packages were added:
   com.unity.modules.vr@1.0.0
   com.unity.modules.wind@1.0.0
   com.unity.modules.xr@1.0.0
-
-=== Fri Nov 15 22:22:46 2019
-
-Packages were changed.
-Update Mode: mergeDefaultDependencies
-
-The following packages were added:
-  com.unity.2d.sprite@1.0.0
-  com.unity.2d.tilemap@1.0.0
-  com.unity.progrids@3.0.3-preview.4
