@@ -54,7 +54,7 @@ public class MainCharacterController : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift))//If the 'left shift' key is being pressed
             {
                 animate.SetInteger("Condition", 2);
-                moveDir = new Vector3(0, 0, 2);
+                moveDir = new Vector3(0, 0, 5);
                 moveDir *= speed;
                 moveDir = transform.TransformDirection(moveDir);//sets transform from local space to world space
 
@@ -116,4 +116,23 @@ public class MainCharacterController : MonoBehaviour
         moveDir.y -= gravity * Time.deltaTime; //every frame, move our player on the y axis by gravity value. Essentially, lowering the character to the ground
         controller.Move(moveDir * Time.deltaTime);
     }
-}
+    void OnTriggerEnter(Collider other)
+    {
+            if (other.gameObject.CompareTag("Round"))
+            {
+                shape = true;
+            Destroy(other.gameObject);
+            }
+            else if (other.gameObject.CompareTag("Strength"))
+            {
+                strength = true;
+            Destroy(other.gameObject);
+        }
+            else if (other.gameObject.CompareTag("Jump"))
+            {
+                jumpBoost = true;
+            Destroy(other.gameObject);
+        }
+        }
+    }
+
